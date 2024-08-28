@@ -9,7 +9,6 @@
     <title>URL Shortner</title>
 </head>
 <body>
-    <div class="container">
     <h1>URL Shortner</h1>
     
 <% if(locals.id){  %>
@@ -17,35 +16,32 @@
     <% } %>
 
     <form action="/url" method="POST">
-        <label>Enter Your URL</label>
-        <div class="input-group mb-3 mt-2">
-            <input type="text" name="url" class="form-control" placeholder="https://www.example.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        </div>
-        <button type="submit" class="btn btn-dark">SUBMIT</button>
 
-    <!-- <label>Enter Your URL</label>
+    <label>Enter Your URL</label>
     <input type="text" name="url" placeholder="https://www.example.com">
-    <button type="submit">SUBMIT</button> -->
+    <button type="submit">SUBMIT</button>
 </form>
 
 <div>
     <% if(locals.urls){ %>
-    <table class="table">
+    <table>
         <thead>
             <th>S. No</th>
             <th>Short Id</th>
             <th>Short URL</th>
             <th>Redirect</th>
+            <th>Created By</th>
             <th>Total Clicks</th>
         </thead>
         <tbody>
             <% urls.forEach((url, index) => {  %>
                 <tr>
-                <td><%=   index + 1 %></td>
-                <td><%= url.shortId %></td>
-                <td style="cursor: pointer;"><a target="_blank" href="http://localhost:3000/url/<%=url.shortId%>">http://localhost:3000/url/<%= url.shortId %></a></td>
-                <td><%= url.redirectUrl %></td>
-                <td><%= url.visitedHistory.length %></td>
+                <td style=" padding: 10px;"><%=   index + 1 %></td>
+                <td style=" padding: 10px;"><%= url.shortId %></td>
+                <td style=" padding: 10px;">http://localhost:3000/url/<%= url.shortId %></td>
+                <td style=" padding: 10px;"><%= url.redirectUrl %></td>
+                <td style=" padding: 10px;"><%= url.CreatedBy.name %></td>
+                <td style=" padding: 10px;"><%= url.visitedHistory.length %></td>
                 </tr>
                 <% }); %>
             
@@ -54,6 +50,6 @@
     <% } %>
 
 </div>
-</div>
+
 </body>
 </html>

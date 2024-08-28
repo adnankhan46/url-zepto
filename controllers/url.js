@@ -16,7 +16,7 @@ async function handleGenerateNewShortUrl(req, res){
 
     return res.render("home", {
         id: shortID,
-    })
+    });
 
 }
 
